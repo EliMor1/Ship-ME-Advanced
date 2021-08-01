@@ -1,2 +1,2 @@
-# Ship-ME-Advanced
- Advanced implementation to Ship-ME Project
+# Ship-ME
+ Companies, Orders and Shipping Management System.

@@ -1,0 +1,128 @@
+/* body{
+    background-color:#222e50;
+} */
+
+
+
+.dropbtn {
+    border-radius:100%;
+    width:24px;
+    height:24px;
+    margin-top:50%;
+  }
+  .actiondropbtn {
+    border-radius:100%;
+    width:36px;
+    height:36px;
+  }
+  
+  .dropdown {
+    position:absolute;
+    margin-left:64%;
+    display: inline-block;
+  }
+  
+  .actiondropdown{
+    display:block;
+    
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right:-75px;
+    background-color: #f9f9f9;
+    min-width: 250px;
+    margin-top:0%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .actiondropdown-content {
+    display: none;
+    position: absolute;
+    right:40px;
+    background-color: #f9f9f9;
+    min-width: 125px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 2px 10px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .actiondropdown-content a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 11px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  .actiondropdown-content a:hover {background-color: #f1f1f1}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  .actiondropdown:hover .actiondropdown-content {
+    display: block;
+  }
+
+
+  * {
+    box-sizing: border-box;
+  }
+
+
+  
+  #myInput {
+    background-image: url("../../assets/Search.jpg");
+    background-position: 99% 8px;
+    background-repeat: no-repeat;
+    background-size: 15px;
+    width: 18%;
+    font-size: 12px;
+    padding: 8px 8px 8px 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+    margin-top:30px;
+    margin-left: 1.5%;
+  }
+  
+  #myTable {
+    border-collapse: collapse;
+    width: 98%;
+    margin-left:1%;
+    font-size: 11px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  #myTable th{
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    padding: 12px 12px;
+  }
+  #myTable td {
+    text-align: left;
+    padding: 4px 12px;
+  }
+  
+  /* #myTable tr {
+    border-bottom: 1px solid #ddd;
+  } */
+  
+  #tblBtn{
+    height:36px;
+    width:36px;
+  }
+  #myTable tr:hover {
+    text-decoration: underline;
+  }
+  
+  
