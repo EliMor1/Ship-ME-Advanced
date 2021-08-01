@@ -1,14 +1,14 @@
 const jwt = require('jsonwebtoken');
 
-const verifyToken = (req,res,next) =>{
-    const authHeader = req.headers['token'];
-    if(!authHeader){
+const verifyToken = async (req,res,next) =>{
+    //const token = req.headers['Authorization'];
+    const token = req.headers.authorization;
+    if(!token){
         return res.send('Access Denied.');
     }
-    //const token = authHeader && authHeader.split(' ')[1];
     try{
-        const verify = jwt.verify(authHeader, process.env.TOKEN);
-        console.log(verify);
+        const verify = jwt.verify(token, process.env.TOKEN);
+        req.verified = verify.email;
         next();
     }catch(error){
         res.status(401).send('Invalid Access Token.');

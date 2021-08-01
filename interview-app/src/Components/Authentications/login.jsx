@@ -32,7 +32,6 @@ const Login = (props) =>{
     const loggedUser = {
       email:userInput.email,
       password:userInput.password,
-      accessToken: localStorage.getItem('token')
     }
     axios.post("http://localhost:4000/app/auth/login", loggedUser)
     .then(response =>{

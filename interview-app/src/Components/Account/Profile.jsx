@@ -7,9 +7,12 @@ import InternNavbar from '../Navigations/InternNavbar';
 import blankImage from '../../assets/BlankImage.png'
 import defaultImg from '../../assets/Default.jpg'
 import '../Design/styles.css';
+import {useSelector, useDispatch} from 'react-redux';
+import { userActions } from '../../Store/Redux.js';
 
 
 const Profile = (props) =>{
+    const dispatch = useDispatch();
 
     const [userInput,setUserInput] = useState({
         firstName:'',
@@ -60,30 +63,30 @@ const Profile = (props) =>{
             props.history.push("/unauthorized");
             
         }
-          const accToken = {
-              token: localStorage.getItem('token'),
-          }
-          axios.post("http://localhost:4000/app/account/profile", accToken).then(response => handleUpdate(response));
+        axios.post("http://localhost:4000/app/account/profile", {}, {headers: {Authorization : localStorage.getItem('token')}}).then(response => handleUpdate(response));
     }, [localStorage.getItem('token')])
 
       
 
     const handleSubmit = (event) =>{
         event.preventDefault();
-          const profileSettings ={
+        const profileSettings ={
             firstName:userInput.firstName,
             lastName:userInput.lastName,
             jobTitle:userInput.jobTitle,
             primaryPhone:userInput.primaryPhone,
             secondaryPhone:userInput.secondaryPhone,
             secondaryEmail:userInput.secondaryEmail,
-            token: localStorage.getItem('token')
-          }
-          axios.post("http://localhost:4000/app/account/profile/update", profileSettings)
-          .then(response => console.log(response));
-          alert('profile updated successfully!');
+        }
+        axios.post("http://localhost:4000/app/account/profile/update", profileSettings,{headers: {Authorization : localStorage.getItem('token')}} )
+        .then(response => console.log(response));  
+        if(userInput.companyName != undefined){
+            dispatch(userActions.updateCompany({companyName : userInput.companyName}));
+        }
+        dispatch(userActions.updateProfile({firstName : userInput.firstName,lastName : userInput.lastName}));
+        alert('profile updated successfully!');
           
-        } 
+    } 
 
     return(
         <>
@@ -119,6 +122,7 @@ const Profile = (props) =>{
                 <FormLabel>New password</FormLabel>
                 <FullInput type="password"></FullInput>
                 <FormLabel>Confirm password</FormLabel>
+                <FullInput type="password"></FullInput>
                 <hr></hr>
                 <br></br>
                 <Save type="submit" value="Save"></Save>

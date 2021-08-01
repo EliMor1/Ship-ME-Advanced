@@ -2,7 +2,7 @@ import React from 'react'
 import redux , {createStore} from 'redux';
 import {createSlice, configureStore} from '@reduxjs/toolkit'
 
-const initialUserState = {firstName:'', lastName:'', companyName:'someee', isAdmin:true, isManager:false};
+const initialUserState = {firstName:'', lastName:'', companyName:'', isAdmin:false, isManager:false};
 const initialAuthState = {isLogged:false};
 
 const userSlice = createSlice({
@@ -10,10 +10,10 @@ const userSlice = createSlice({
     initialState:initialUserState,
     reducers:{
         adminApproved(state){
-            state.isAdmin = false;
+            state.isAdmin = true;
         },
         managerApproved(state){
-            state.isManager = false;
+            state.isManager = true;
         },
         updateProfile(state,action){
             state.firstName = action.payload.firstName;
@@ -30,7 +30,7 @@ const authSlice = createSlice({
     initialState : initialAuthState,
     reducers:{
         userLogged(state){
-            state.isLogged = true
+            state.isLogged = false;
         }
     }
 })

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState,useEffect } from 'react'
 import {VerticalSeparator, A, UnorderedList, ListItem, Logo, DropLabel,MinimizedImg,BellImg,DropImg} from '../Design/styledComponent'
 import axios from 'axios'
 import {BrowserRouter as Router, Switch, Route, Link, Redirect} from 'react-router-dom';
@@ -15,15 +15,7 @@ const Navbar = (props) =>{
 
     const userState = useSelector(state => state.user);
     const authState = useSelector(state => state.auth);
-   
-   
-   
-    // const dispatch = useDispatch();
-    //dispatch({type:'company'});
 
-    //dispatch(userActions.adminApproved());
-    //dispatch(userActions.updateProfile({firstName:'somename', lastName:'last'}));
-    //dispatch(userActions.updateCompany(userInput.companyName)); -->> userInput is a json format const variable. userInput:{first... , last... , etc}
     
   
     const navLinkStyle = {

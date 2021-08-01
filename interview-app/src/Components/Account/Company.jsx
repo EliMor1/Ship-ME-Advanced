@@ -4,14 +4,17 @@ import axios from 'axios'
 import {Link} from 'react-router-dom';
 import Navbar from '../Navigations/Navbar';
 import InternNavbar from '../Navigations/InternNavbar';
-import blankImage from '../../assets/BlankImage.png'
 import defaultCompanyImg from '../../assets/company-default.png'
 import '../Design/styles.css';
+import {useSelector, useDispatch} from 'react-redux';
+import { userActions } from '../../Store/Redux.js';
 
 
 
 
 const Company = (props) =>{
+
+    const dispatch = useDispatch();
 
     const [userInput,setUserInput] = useState({
         companyName:'',
@@ -69,11 +72,13 @@ const Company = (props) =>{
             primaryContactName:userInput.primaryContactName,
             primaryContactPhone:userInput.primaryContactPhone,
             primaryContactJobTitle:userInput.primaryContactJobTitle,
-            token: localStorage.getItem('token')
+            //token: localStorage.getItem('token')
         }
-        axios.post("http://localhost:4000/app/account/company/update", companySettings)
+        axios.post("http://localhost:4000/app/account/company/update", companySettings, {headers: {Authorization : localStorage.getItem('token')}})
         .then(response => console.log(response));
-        alert('company updated successfully!');
+        if(userInput.companyName != undefined){
+            dispatch(userActions.updateCompany({companyName : userInput.companyName}));
+        }
     }
 
     useEffect(() =>{
@@ -83,10 +88,10 @@ const Company = (props) =>{
             props.history.push("/unauthorized");
             
         }
-        const accToken = {
-            token: localStorage.getItem('token'),
-        }
-        axios.post("http://localhost:4000/app/account/company", accToken).then(response => handleUpdate(response));
+        // const accToken = {
+        //     token: localStorage.getItem('token'),
+        // }
+        axios.post("http://localhost:4000/app/account/company", {},{headers: {Authorization : localStorage.getItem('token')}}).then(response => handleUpdate(response));
     },[localStorage.getItem('token')]);
 
       
