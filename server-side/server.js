@@ -1,10 +1,10 @@
-//8sygm6HKyMYvz2tQ superAdmin password.
+
 
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const routeUrls = require('./routes/routes');
+const adminUrls = require('./routes/admin');
 const authUrls = require('./routes/authentication');
 const accountUrls = require('./routes/account');
 
@@ -15,7 +15,7 @@ mongoose.connect(process.env.DATABASE_ACCESS, ()=> console.log("Database is conn
 
 app.use(express.json());
 app.use(cors());
-app.use('/app',routeUrls);
+app.use('/app',adminUrls);
 app.use('/app/auth', authUrls);
 app.use('/app/account',accountUrls);
 
