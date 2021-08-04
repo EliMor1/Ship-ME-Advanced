@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import {VerticalSeparator, A, UnorderedList, ListItem, Logo, DropLabel,MinimizedImg,BellImg,DropImg} from '../Design/styledComponent'
+import {VerticalSeparator, A, UnorderedList, ListItem,ListItemRight, Logo, DropLabel,MinimizedImg,BellImg,DropImg} from '../Design/styledComponent'
 import axios from 'axios'
 import {BrowserRouter as Router, Switch, Route, Link, Redirect} from 'react-router-dom';
 import logo from '../../assets/LogoHome.png'
@@ -30,6 +30,8 @@ const Navbar = (props) =>{
         
     }
     const LinkStyle = {
+        marginTop:"5px",
+        marginBottom:"5px",
         display:"block",
         color: "black",
         textAlign: "left",
@@ -46,6 +48,7 @@ const Navbar = (props) =>{
         <div>
             <div>
                 <UnorderedList>
+                
                     <ListItem>
                         <Logo src ={logo} width="130" height="25"></Logo>
                     </ListItem>
@@ -59,7 +62,7 @@ const Navbar = (props) =>{
                         <A><Link style={navLinkStyle} to ="/home/orders">Orders</Link></A>
                     </ListItem>
                     <ListItem>
-                    <BellImg src ={Bell}></BellImg>
+                        <BellImg src ={Bell}></BellImg>
                     </ListItem>
                     <ListItem>
                     <div class="dropdown">
@@ -70,22 +73,19 @@ const Navbar = (props) =>{
                             <DropLabel>{userState.firstName} {userState.lastName}</DropLabel>
                             <br></br>
                             <DropLabel>{userState.companyName}</DropLabel>
-                            <br></br>
-                            <br></br>
                             <a> <Link style={LinkStyle} to ="/account/profile">Profile</Link></a>
                             <a> <Link style={userState.isAdmin ? disablePage : LinkStyle} to ="/account/company">Company</Link> </a>
                             <a> <Link style={LinkStyle} to = "/account/account">Account</Link></a>
-                            
                             <a> <Link style={!userState.isAdmin ? disablePage :LinkStyle} to = "/account/companies">Companies</Link></a>
                             <hr></hr>
                             <a> <Link style={LinkStyle} to = "/">Logout</Link></a>
-                            <br></br>
+                            
                         </div>
                     </div>
                 </ListItem>
-                <ListItem> 
-                    <MinimizedImg src ="https://randomuser.me/api/portraits/men/43.jpg"></MinimizedImg>
-                </ListItem>
+                <ListItemRight> 
+                    <MinimizedImg src ={Default}></MinimizedImg>
+                </ListItemRight>
                 </UnorderedList>   
             </div>
         </div>

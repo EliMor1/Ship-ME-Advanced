@@ -21,6 +21,14 @@ const userSlice = createSlice({
         },
         updateCompany(state,action){
             state.companyName = action.payload.companyName;
+        },
+        clearStore(state){
+            state.isAdmin = false;
+            state.isManager = false;
+            state.firstName = '';
+            state.lastName = '';
+            state.companyName = '';
+            
         }
     }
 })
@@ -30,7 +38,7 @@ const authSlice = createSlice({
     initialState : initialAuthState,
     reducers:{
         userLogged(state){
-            state.isLogged = false;
+            state.isLogged = true;
         }
     }
 })

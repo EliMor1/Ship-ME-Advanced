@@ -96,7 +96,7 @@ const Profile = (props) =>{
                 <h2>Profile</h2>
                 <Row>
                     <ColumnLeft>
-                    <BlankImg src = "https://randomuser.me/api/portraits/men/43.jpg"></BlankImg>
+                    <BlankImg src = {defaultImg}></BlankImg>
                     </ColumnLeft>
                     <ColumnRight>
                         <FormLabel>First name</FormLabel>

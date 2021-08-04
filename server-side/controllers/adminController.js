@@ -1,87 +1,59 @@
-const userModel = require('../models/userModel');
-const companyModel = require('../models/companyModel');
-const authModel = require('../models/signUpModels');
+const adminServices = require('../services/admin');
 
 exports.getCompanies = async function(req,res){
-    const companies = await companyModel.find({});
     try{
-        res.send(companies);
+        const companies = await adminServices.fetchCompanies();
+        if(!companies){
+            return res.status(400).send('companies not found.');
+        }
+        res.status(200).send(companies);
     }catch(err){
         res.send(err);
     }
+    
+   
 }
 
 exports.newCompany = async function(req,res){
-    const newCompany = await new companyModel({
-        companyManager:"",
-        companyName:req.body.companyName,
-        companyAddress:req.body.companyAddress,
-        city:req.body.companyCity,
-        state:req.body.companyState,
-        zipCode:req.body.companyZipCode,
-        companyPhone:req.body.companyPhone,
-        companyEmail:req.body.companyEmail,
-        companyWebsite:req.body.companyWebsite,
-        primaryContactName:req.body.primaryContactName,
-        primaryContactPhone:req.body.primaryContactPhone,
-        primaryContactJobTitle:req.body.primaryContactJobTitle,
-
-    });
-    newCompany.save()
+    const query = req.body;
+    const newCompany = await adminServices.createNewCompany(query);
+    newCompany.save();
     try{
-        res.send(newCompany);
+        res.status(201).send(newCompany);
     }
     catch(error){
-        res.send(error);
+        res.status(500).send('server error',error);
     }
 }
 
 exports.deleteCompany = async function(req,res){
     try{
-        const deletedComp = await companyModel.findOneAndDelete({companyName:req.body.companyName});
-        const notifyManager = await userModel.findOneAndUpdate({companyName:req.body.companyManager},{
-            companyName:undefined,
-            companyRole:undefined,
-        });
-        console.log('deleted');
-        res.send(deletedComp);
+        const query = req.body;
+        const deletedComp = await adminServices.deleteSelectedCompany(query);
+        if(!deletedComp){
+            res.status(400).send('cannot find a company to delete');
+        }
+        const notifyManager = await adminServices.notifyManagerOnDelete(query);
+        
+        res.status(200).send(deletedComp);
     }catch(err){
-        res.send(err);
+        res.status(500).send('server error',err);
     }
 }
 
 exports.editCompany = async function(req,res){
         // edit the chosen company 
-        const company = await companyModel.findOneAndUpdate({companyName:req.body.companyName},{
-            // _id:req.body.id,
-            companyName:req.body.companyNewName,
-            companyPhone:req.body.companyPhone,
-            companyWebsite:req.body.companyWebsite,
-            companyAddress:req.body.companyAddress,
-            primaryContactName:req.body.primaryContactName,
-            primaryContactPhone:req.body.primaryContactPhone,
-        });
+        const query = req.body;
+        const company = await adminServices.editSelectedCompany(query);
+        if(!company){
+            res.status(400).send('cannot edit selected company');
+        }
     
         // notify the company manager on it's company settings changes
-        const notifyCompanyManager = await userModel.findOneAndUpdate({primaryEmail:req.body.companyManager},{
-            companyName:req.body.companyNewName,
-            companyRole:req.body.companyRole,
-        });
-    
-       
-        // notify all the users in the selected company about the relevant changes
-        //  const usersInCompany = await companyModel.findOne({companyName:req.body.companyName},{companyUsers:{companyUserName:req.body.firstName, companyUserRole:req.body.companyRole} })
-        //  for(var i=0; i<companyUsers.length; i++){
-        //      const userName = usersInCompany.companyUsers[i].companyUserName;
-        //      const userRole = usersInCompany.companyUsers[i].companyUserRole;
-        //      const notifiedUser = await userModel.findOneAndUpdate({firstName:userName},{
-        //          companies:[{companyName:req.body.companyName, companyRole:userRole}]
-        //      })
-     
-        //  }
+        const notifyCompanyManager = await adminServices.notifyManagerOnEdit(query);
          try{
-             res.send('company edited successfully.');
+             res.status(200).send(company);
          }catch(error){
-             res.send(error);
+             res.status(500).send('server error',error);
          }
 }

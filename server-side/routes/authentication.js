@@ -7,8 +7,10 @@ const bcrypt = require('bcrypt');
 const Joi = require('@hapi/joi');
 const jwt = require('jsonwebtoken');
 const authController = require('../controllers/authController');
+const validateData = require('../validators/validateExistingData');
+const validateInputCorrection = require('../validators/validateCorrections');
 
-router.post('/signup', authController.signup);
+router.post('/signup', validateInputCorrection, validateData, authController.signup);
 
 router.post('/login', authController.login);
 

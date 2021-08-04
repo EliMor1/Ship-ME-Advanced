@@ -1,4 +1,6 @@
-import React, { Component,useState } from 'react'
+import React, { useState } from 'react'
+import {useSelector, useDispatch} from 'react-redux';
+import { userActions } from '../../Store/Redux.js';
 //import './styles.css';
 import '../Design/styles.css';
 import {LoginForm,Root,Submit, Input, DivForm, Other, Header, Label, CheckBoxStyle,LogoImg} from '../Design/styledComponent'
@@ -10,6 +12,8 @@ import logo from '../../assets/Logo.png'
 const Login = (props) =>{
   document.body.style.backgroundColor = "#222e50";
   localStorage.removeItem('token');
+  const dispatch = useDispatch();
+  dispatch(userActions.clearStore());
   const [userInput,setUserInput] = useState({
     email:0,
     password:0,

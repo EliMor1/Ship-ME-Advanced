@@ -128,9 +128,14 @@ const SignUp = (props) =>{
       }
       axios.post("http://localhost:4000/app/auth/signup", registeredUser)
       .then(response =>{ 
-        localStorage.setItem('token', response.data);
-        document.body.style.backgroundColor = "white";
-        props.history.push("/home");
+        if(response.data != 'email account already exist.'){
+          localStorage.setItem('token', response.data);
+          document.body.style.backgroundColor = "white";
+          props.history.push("/home");
+        }
+        else{
+          alert('email account already exist.');
+        }
       });
     }
     else{

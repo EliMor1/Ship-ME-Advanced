@@ -197,6 +197,10 @@ overflow:hidden;
 export const ListItem = styled.li`
 float:left;`
 
+export const ListItemRight = styled.li`
+float:center;
+display:inline-block;`
+
 export const A = styled.a`
 display:block;
 color:white;
@@ -294,15 +298,17 @@ height:96px;`;
 export const MinimizedImg = styled.img`
 border-radius:100%;
 margin-top:10px;
-margin-left:848px;
+display:block;
+margin-left:50%;
 width:28px;
 height:28px;`;
 
 export const BellImg = styled.img`
 border-radius:100%;
+text-align:center;
 margin-top:80%;
-margin-left:4400%;
-display:flex;
+margin-left:10%;
+display:block;
 width:18px;
 height:18px;`;
 
