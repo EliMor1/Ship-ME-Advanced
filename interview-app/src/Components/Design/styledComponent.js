@@ -366,3 +366,43 @@ width:62%;
 border: 1px solid #ddd;
 height:40px;`;
 
+
+export const disablePage ={
+  display:"none"
+}
+
+export const navLinkStyleBlack = {
+  display:"block",
+  color: "black",
+  textAlign: "center",
+  padding: "16px 12px",
+  textDecoration:"none",
+  fontSize: "11px",
+  fontFamily: "Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+  
+}
+
+export const LinkStyle = {
+  marginTop:"5px",
+  marginBottom:"5px",
+  display:"block",
+  color: "black",
+  textAlign: "left",
+  textDecoration:"none",
+  fontSize: "12px",
+  fontFamily: "Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+  
+}
+
+export const navLinkStyleWhite = {
+  display:"block",
+  color: "white",
+  textAlign: "center",
+  padding: "16px 12px",
+  textDecoration:"none",
+  fontSize: "11px",
+  fontWeight:"bold",
+  fontFamily: "Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+  
+}
+

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {LeftSection} from '../Design/styledComponent'
 import axios from 'axios'
-import Navbar from '../Navigations/Navbar';
 import '../Design/styles.css';
 
 import {useSelector, useDispatch} from 'react-redux';
@@ -37,7 +36,7 @@ const Home = (props) =>{
     } ,[localStorage.getItem('token')]);
     return (
         <>
-            <Navbar/>     
+              
             <LeftSection/>
         </>
     )

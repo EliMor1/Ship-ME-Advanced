@@ -1,12 +1,10 @@
-import React, { useState,useEffect } from 'react'
-import {Submit, Input, DivForm, Other, Header, Label, CheckBoxStyle,Select,LogoImg} from '../Design/styledComponent'
-import axios from 'axios'
-import {BrowserRouter as Router, Switch, Route, Link, Redirect} from 'react-router-dom';
+import React from 'react'
+import {Submit, DivForm, Header,Select,LogoImg} from '../Design/styledComponent'
 import logo from '../../assets/Logo.png'
 import '../Design/styles.css';
 
 
-
+ // this component is not yet implemented. 
 const ChooseCompany = () =>{
     document.body.style.backgroundColor = "#222e50";
     return (
@@ -19,7 +17,6 @@ const ChooseCompany = () =>{
                     <option>Company2</option>
                     <option>Company3</option>
                 </Select>
-               
                 <Submit type="submit" value="Enter"></Submit>
             </DivForm>
         </>

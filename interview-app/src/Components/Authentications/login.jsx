@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import {useSelector, useDispatch} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { userActions } from '../../Store/Redux.js';
-//import './styles.css';
 import '../Design/styles.css';
-import {LoginForm,Root,Submit, Input, DivForm, Other, Header, Label, CheckBoxStyle,LogoImg} from '../Design/styledComponent'
+import {Submit, Input, DivForm, Other, Header, Label, CheckBoxStyle,LogoImg} from '../Design/styledComponent'
 import axios from 'axios'
-import {BrowserRouter as Router, Switch, Route, Link, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Link} from 'react-router-dom';
 import logo from '../../assets/Logo.png'
 
 

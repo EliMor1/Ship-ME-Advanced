@@ -1,5 +1,5 @@
-import React, { useState,useEffect } from 'react'
-import {Header,Form,ColumnLeft,ColumnRight,Row,FullInput,FormLabel,BlankImg,Save,LeftColumn,CenterColumn,RightColumn,Cancel,Create} from '../Design/styledComponent'
+import React, { useState } from 'react'
+import {Form,ColumnLeft,ColumnRight,Row,FullInput,FormLabel,BlankImg,LeftColumn,RightColumn,Cancel,Create} from '../Design/styledComponent'
 import axios from 'axios'
 import Default from '../../assets/Default.jpg'
 import '../Design/styles.css';

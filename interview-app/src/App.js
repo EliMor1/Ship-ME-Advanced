@@ -12,23 +12,33 @@ import ChooseCompany from './Components/Authentications/ChooseCompany';
 import NewCompany from './Components/Account/NewCompany';
 import NewUser from './Components/Account/NewUser';
 import UnauthorizedPage from './Components/Unauthorization/UnauthorizedPage';
+import Navbar from './Components/Navigations/Navbar';
+import InternNavbar from './Components/Navigations/InternNavbar';
 
 function App() {
   return (
     <main>
+      
       <Switch>
-        <Route path ="/" component ={Login} exact />
-        <Route path ='/sign-up' component = {SignUp} />
-        <Route path ="/home" component={Home} />
-        <Route path ="/account/profile" component = {Profile}/>
-        <Route path ="/account/company" component = {Company}/>
-        <Route path ="/account/account" component = {Account}/>
-        <Route path ="/account/companies" component = {Companies}/>
-        <Route path ="/choose-company" component = {ChooseCompany}/>
-        <Route path ="/account/new-company" component = {NewCompany}/>
-        <Route path ="/account/new-user" component = {NewUser}/>
-        <Route path = '/unauthorized' component = {UnauthorizedPage}/>
+          <Route path ="/" component ={Login} exact />
+          <Route path ='/sign-up' component = {SignUp} />  
+          <Route path ="/choose-company" component = {ChooseCompany}/>
+          <Route path ="/account/new-company" component = {NewCompany}/>
+          <Route path ="/account/new-user" component = {NewUser}/>
+          <Route path = '/unauthorized' component = {UnauthorizedPage}/>
+          <Route>
+            <Navbar/>
+            <Route path ="/home" component={Home} />
+              <Route>
+              <InternNavbar/>    
+              <Route path ="/account/profile" component = {Profile}/>
+              <Route path ="/account/company" component = {Company}/>
+              <Route path ="/account/account" component = {Account}/>
+              <Route path ="/account/companies" component = {Companies}/>
+            </Route>
+          </Route>
       </Switch>
+   
     </main>
   );
 }

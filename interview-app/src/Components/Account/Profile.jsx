@@ -1,13 +1,9 @@
 import React, { useEffect,useState } from 'react'
-import {Header,Form,ColumnLeft,ColumnRight,Row,FullInput,FormLabel,BlankImg,HorizontalSeparator,Save} from '../Design/styledComponent'
+import {Form,ColumnLeft,ColumnRight,Row,FullInput,FormLabel,BlankImg,Save} from '../Design/styledComponent'
 import axios from 'axios'
-import {Link} from 'react-router-dom';
-import Navbar from '../Navigations/Navbar';
-import InternNavbar from '../Navigations/InternNavbar';
-import blankImage from '../../assets/BlankImage.png'
 import defaultImg from '../../assets/Default.jpg'
 import '../Design/styles.css';
-import {useSelector, useDispatch} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { userActions } from '../../Store/Redux.js';
 
 
@@ -90,8 +86,6 @@ const Profile = (props) =>{
 
     return(
         <>
-            <Navbar/>
-            <InternNavbar/> 
             <Form onSubmit={handleSubmit}>
                 <h2>Profile</h2>
                 <Row>

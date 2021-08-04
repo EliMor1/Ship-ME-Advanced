@@ -1,54 +1,22 @@
-import React, { useState,useEffect } from 'react'
-import {VerticalSeparator, A, UnorderedList, ListItem,ListItemRight, Logo, DropLabel,MinimizedImg,BellImg,DropImg} from '../Design/styledComponent'
-import axios from 'axios'
-import {BrowserRouter as Router, Switch, Route, Link, Redirect} from 'react-router-dom';
+import React from 'react'
+import {VerticalSeparator, A, UnorderedList, ListItem,ListItemRight, Logo, DropLabel,MinimizedImg,BellImg,DropImg, navLinkStyleWhite,LinkStyle,disablePage} from '../Design/styledComponent'
+import {BrowserRouter as Router, Link} from 'react-router-dom';
 import logo from '../../assets/LogoHome.png'
 import dropIcon from '../../assets/Unknown.png'
 import Default from '../../assets/Default.jpg'
 import Bell from '../../assets/Bell.png';
 import '../Design/styles.css';
-import {useSelector, useDispatch} from 'react-redux';
-import { userActions } from '../../Store/Redux.js';
+import {useSelector} from 'react-redux';
 
 
-const Navbar = (props) =>{
+const Navbar = () =>{
 
     const userState = useSelector(state => state.user);
-    const authState = useSelector(state => state.auth);
-
-    
-  
-    const navLinkStyle = {
-        display:"block",
-        color: "white",
-        textAlign: "center",
-        padding: "16px 12px",
-        textDecoration:"none",
-        fontSize: "11px",
-        fontWeight:"bold",
-        fontFamily: "Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-        
-    }
-    const LinkStyle = {
-        marginTop:"5px",
-        marginBottom:"5px",
-        display:"block",
-        color: "black",
-        textAlign: "left",
-        textDecoration:"none",
-        fontSize: "12px",
-        fontFamily: "Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
-        
-    }
-    const disablePage ={
-        display:"none"
-    }
 
     return (
         <div>
             <div>
                 <UnorderedList>
-                
                     <ListItem>
                         <Logo src ={logo} width="130" height="25"></Logo>
                     </ListItem>
@@ -56,10 +24,10 @@ const Navbar = (props) =>{
                     <VerticalSeparator/>
                     </ListItem>
                     <ListItem>                          
-                        <A><Link style={navLinkStyle} to = "/home/shipments">Shipments</Link></A>
+                        <A><Link style={navLinkStyleWhite} to = "/home/shipments">Shipments</Link></A>
                     </ListItem>
                     <ListItem>
-                        <A><Link style={navLinkStyle} to ="/home/orders">Orders</Link></A>
+                        <A><Link style={navLinkStyleWhite} to ="/home/orders">Orders</Link></A>
                     </ListItem>
                     <ListItem>
                         <BellImg src ={Bell}></BellImg>
@@ -78,8 +46,7 @@ const Navbar = (props) =>{
                             <a> <Link style={LinkStyle} to = "/account/account">Account</Link></a>
                             <a> <Link style={!userState.isAdmin ? disablePage :LinkStyle} to = "/account/companies">Companies</Link></a>
                             <hr></hr>
-                            <a> <Link style={LinkStyle} to = "/">Logout</Link></a>
-                            
+                            <a> <Link style={LinkStyle} to = "/">Logout</Link></a>    
                         </div>
                     </div>
                 </ListItem>

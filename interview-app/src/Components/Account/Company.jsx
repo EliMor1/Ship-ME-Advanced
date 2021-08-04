@@ -1,12 +1,9 @@
 import React, { useState,useEffect } from 'react'
-import {Header,Form,ColumnLeft,ColumnRight,Row,FullInput,FormLabel,BlankImg,HorizontalSeparator,Save,LeftColumn,CenterColumn,RightColumn} from '../Design/styledComponent'
+import {Form,ColumnLeft,ColumnRight,Row,FullInput,FormLabel,BlankImg,HorizontalSeparator,Save,LeftColumn,CenterColumn,RightColumn} from '../Design/styledComponent'
 import axios from 'axios'
-import {Link} from 'react-router-dom';
-import Navbar from '../Navigations/Navbar';
-import InternNavbar from '../Navigations/InternNavbar';
 import defaultCompanyImg from '../../assets/company-default.png'
 import '../Design/styles.css';
-import {useSelector, useDispatch} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { userActions } from '../../Store/Redux.js';
 
 
@@ -97,9 +94,7 @@ const Company = (props) =>{
       
 
     return (
-        <div>
-            <Navbar/>
-            <InternNavbar userRoles={userInput.userType}/>
+        <>
             <Form onSubmit={handleSubmit}>
                 <h2>Company info</h2>
                 <Row>
@@ -144,7 +139,7 @@ const Company = (props) =>{
                 <br></br>
                 <Save type="submit" value="Save"></Save>
             </Form>
-        </div>
+        </>
     )
 }
 

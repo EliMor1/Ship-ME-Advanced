@@ -4,7 +4,6 @@ import axios from 'axios'
 import {Link} from 'react-router-dom';
 import Navbar from '../Navigations/Navbar';
 import InternNavbar from '../Navigations/InternNavbar';
-import blankImage from '../../assets/BlankImage.png'
 import Actions from '../../assets/Actions.jpg'
 import '../Design/styles.css';
 
