@@ -68,7 +68,7 @@ const Companies = (props) =>{
 
 
     return (
-        <div>
+        <>
             
             <div>
             <input type="text" id="myInput" placeholder="Search" title="Type in a name"></input>
@@ -90,7 +90,7 @@ const Companies = (props) =>{
                 {renderTableData()}
             </table>
             </div>
-        </div>
+        </>
     )
 }
 

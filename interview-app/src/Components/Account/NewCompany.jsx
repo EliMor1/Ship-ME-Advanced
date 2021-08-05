@@ -56,7 +56,7 @@ const NewCompany = (props) =>{
     }
 
     return (
-        <div>
+        <>
             <Form onSubmit={handleSubmit}>
                 <h2>New Company</h2>
                 <Row>
@@ -100,7 +100,7 @@ const NewCompany = (props) =>{
                 <Cancel type="button" value="Cancel" onClick={handleCancel}></Cancel>
                 <Create type="submit" value="Create"></Create>
             </Form>
-        </div>
+        </>
     )
 }
 

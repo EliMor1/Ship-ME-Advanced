@@ -54,7 +54,7 @@ const NewUser = (props) =>{
         }
 
     return (
-        <div>
+        <>
             <Form onSubmit={handleSubmit}>
                 <h2>New User</h2>
                 <Row>
@@ -89,7 +89,7 @@ const NewUser = (props) =>{
                 <Cancel type="button" value="Cancel" onClick={handleCancel}></Cancel>
                 <Create type="submit" value="Create"></Create>
             </Form>
-        </div>
+        </>
     )
 }
 
