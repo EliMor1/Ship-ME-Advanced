@@ -69,8 +69,7 @@ const Companies = (props) =>{
 
     return (
         <div>
-            <Navbar/>
-            <InternNavbar/>
+            
             <div>
             <input type="text" id="myInput" placeholder="Search" title="Type in a name"></input>
             <Link to ="/account/new-company"><AddNewCompany type="button" value="Add New Company"></AddNewCompany></Link>
