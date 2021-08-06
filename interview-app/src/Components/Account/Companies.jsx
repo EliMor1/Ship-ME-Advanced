@@ -43,10 +43,7 @@ const Companies = (props) =>{
      }
 
     const handleDelete = (name) =>{
-        const companyToDelete = {
-            companyName : name,
-        }
-        return axios.post("http://localhost:4000/app/delete", companyToDelete).then(response => console.log(response));
+        return axios.delete("http://localhost:4000/app/delete", {params:{companyName : name}}).then(response => console.log(response));
     }
 
     const handleUpdate = (response) =>{

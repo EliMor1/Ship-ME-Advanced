@@ -17,10 +17,10 @@ router.get('/getcomps', adminController.getCompanies);
 router.post('/newcomp', adminController.newCompany);
 
 // delete a chosen company from the companies collections and notify all his/her references (Super admin only)
-router.post('/delete', adminController.deleteCompany);
+router.delete('/delete', adminController.deleteCompany);
 
 // editing a selected comapny, super admin posibilities.
-router.post('/editcompany', adminController.editCompany)
+router.patch('/editcompany', adminController.editCompany)
 
 
 

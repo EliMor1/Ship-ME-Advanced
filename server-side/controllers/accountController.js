@@ -90,7 +90,7 @@ exports.createNewUser = async function(req,res){
 
 exports.removeExistingCompanyUser = async function(req,res){
     try{
-        const query = req.body;
+        const query = req.query;
         const company = await accountServices.removeExistingCompanyUser(query);
         res.status(200).send(company);
     }

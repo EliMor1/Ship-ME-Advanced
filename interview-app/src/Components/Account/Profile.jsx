@@ -59,7 +59,7 @@ const Profile = (props) =>{
             props.history.push("/unauthorized");
             
         }
-        axios.post("http://localhost:4000/app/account/profile", {}, {headers: {Authorization : localStorage.getItem('token')}}).then(response => handleUpdate(response));
+        axios.get("http://localhost:4000/app/account/profile", {headers: {Authorization : localStorage.getItem('token')}}).then(response => handleUpdate(response));
     }, [localStorage.getItem('token')])
 
       
@@ -74,7 +74,7 @@ const Profile = (props) =>{
             secondaryPhone:userInput.secondaryPhone,
             secondaryEmail:userInput.secondaryEmail,
         }
-        axios.post("http://localhost:4000/app/account/profile/update", profileSettings,{headers: {Authorization : localStorage.getItem('token')}} )
+        axios.patch("http://localhost:4000/app/account/profile/update", profileSettings,{headers: {Authorization : localStorage.getItem('token')}} )
         .then(response => console.log(response));  
         if(userInput.companyName != undefined){
             dispatch(userActions.updateCompany({companyName : userInput.companyName}));

@@ -28,7 +28,7 @@ exports.newCompany = async function(req,res){
 
 exports.deleteCompany = async function(req,res){
     try{
-        const query = req.body;
+        const query = req.query;
         const deletedComp = await adminServices.deleteSelectedCompany(query);
         if(!deletedComp){
             res.status(400).send('cannot find a company to delete');
